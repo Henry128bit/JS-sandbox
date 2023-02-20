@@ -1,3 +1,4 @@
+'use strict';
 // console.log('Hello World!');
 
 // const btn = document.querySelector('.btn');
@@ -138,29 +139,72 @@ console.log(getTotalIncomeAmount(funds));
 
 // 1.Инкапсуляция 
 
-class User {
-    constructor(name, age) {
+// class User {
+//     constructor(name, age) {
+//         this.name = name;
+//         this._age = age;
+//     }
+
+//     #surname = 'Petrychenko';
+
+//     say = () => {
+//         console.log(`Имя пользователя: ${this.name} ${this.#surname}, возраст ${this._age}`);
+//     }
+
+//     get age() {
+//         return this._age;
+//     }
+
+//     set age(age) {
+//         if (typeof age === 'number' && age > 0 && age < 110) {
+//             this._age = age;
+//         } else {
+//             console.log('Недопустимое значение!');
+//         }
+//     }
+// }
+
+// const ivan = new User('Ivan', 27);
+
+// Fetch
+// Получение ответа от сервера
+fetch('http//...')
+    .then(response => response.json())
+    .then(data => console.log(data));
+
+// Отправка данных на сервер
+fetch('http//...', {
+    method: 'POST',
+    body: JSON.stringify({name: 'Alex'}),
+    headers: {
+        'Content-type': 'application/json'
+    }
+});
+
+class Privat {
+    constructor(name, surname) {
         this.name = name;
-        this._age = age;
+        this.surname = surname;
     }
 
-    #surname = 'Petrychenko';
+    #age = 27;
 
     say = () => {
-        console.log(`Имя пользователя: ${this.name} ${this.#surname}, возраст ${this._age}`);
+        console.log(`${this.name}, ${this.surname}, ${this.#age}`);
     }
 
-    get age() {
-        return this._age;
+    get getName() {
+        return this.name;
     }
 
-    set age(age) {
-        if (typeof age === 'number' && age > 0 && age < 110) {
-            this._age = age;
-        } else {
-            console.log('Недопустимое значение!');
-        }
+    set setName(name) {
+        this.name = name;
     }
 }
 
-const ivan = new User('Ivan', 27);
+let person = new Privat('Alex', 'Clarck');
+person.say();
+person.setName = 'Jhon';
+person.say();
+console.log(person.getName);
+person.#age = 56;
