@@ -208,3 +208,19 @@ person.setName = 'Jhon';
 person.say();
 console.log(person.getName);
 person.#age = 56;
+
+// Webpack || path
+const path = require('path');
+
+module.exports = {
+    mode: 'development',
+    entry: {
+        index: path.resolve(__dirname, 'js/index.js'),
+        about: path.resolve(__dirname, 'js/about/about.js'),
+        analytics: path.resolve(__dirname, 'js/analytics/analytics.js')
+    },
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].js',
+    }
+}
